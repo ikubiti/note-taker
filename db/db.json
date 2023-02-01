@@ -1,10 +1,5 @@
 [
     {
-        "title": "Test Title",
-        "text": "Test text",
-        "note_id": "1"
-    },
-    {
         "title": "First Attempt",
         "text": "This should work without any problems. This is by far one of the most interesting weeks so far.",
         "note_id": "af7cd2de-bbdd-4dc4-ae33-c6f5faa6546c"
@@ -23,10 +18,5 @@
         "title": "Hearts Broke",
         "text": "This is just an interesting subject, let's meet over it to iron out our differences. ",
         "note_id": "5d812b47-bac6-4633-bf54-9054d38b08bb"
-    },
-    {
-        "title": "Let GO!",
-        "text": "First attempt again.",
-        "note_id": "92e0c262-5b4c-47e7-9578-650a2ecec67a"
     }
 ]
