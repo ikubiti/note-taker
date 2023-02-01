@@ -76,3 +76,7 @@ body {
   padding: 20px;
   cursor: pointer;
 }
+
+h1 a {
+  text-decoration: none;
+}
