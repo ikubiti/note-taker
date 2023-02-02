@@ -4,6 +4,47 @@ let noteText = document.querySelector('.note-textarea');
 let saveNoteBtn = document.querySelector('.save-note');
 let newNoteBtn = document.querySelector('.new-note');
 let noteList = document.querySelectorAll('.list-container .list-group');
+const myModalEl = document.getElementById("myModal");
+const confirmEl = document.getElementById("confirmMsg");
+const removeNoteEl = document.getElementById("rm-note");
+const cancelNoteEl = document.getElementById("cl-note");
+
+
+// activeNote is used to keep track of the note in the textarea
+let activeNote = {};
+let noteId = 0;
+
+// Ask user to confirm delete
+const confirmDelete = (title) => {
+	confirmEl.textContent = `Do you really want to delete the "${title}" note?`;
+	myModalEl.style.display = 'block';
+};
+
+
+// Confirm deletion of a note
+removeNoteEl.onclick = () => {
+	if (activeNote.note_id === noteId) {
+		activeNote = {};
+	}
+
+	closeModal();
+	deleteNote(noteId).then(() => {
+		getAndRenderNotes();
+		renderActiveNote();
+	});
+};
+
+// Cancel deletion of a note
+cancelNoteEl.onclick = () => {
+	closeModal();
+};
+
+// close the modal
+const closeModal = () => {
+	confirmEl.textContent = '';
+	myModalEl.style.display = "none";
+};
+
 
 // Show an element
 const show = (elem) => {
@@ -15,8 +56,7 @@ const hide = (elem) => {
 	elem.style.display = 'none';
 };
 
-// activeNote is used to keep track of the note in the textarea
-let activeNote = {};
+
 
 const getNotes = () =>
 	fetch('/api/notes', {
@@ -75,17 +115,11 @@ const handleNoteDelete = (e) => {
 	// Prevents the click listener for the list from being called when the button inside of it is clicked
 	e.stopPropagation();
 
-	const note = e.target;
-	const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).note_id;
+	const note = JSON.parse(e.target.parentElement.getAttribute('data-note'));
+	noteId = note.note_id;
 
-	if (activeNote.id === noteId) {
-		activeNote = {};
-	}
-
-	deleteNote(noteId).then(() => {
-		getAndRenderNotes();
-		renderActiveNote();
-	});
+	// Confirm note deletion
+	confirmDelete(note.title);
 };
 
 // Sets the activeNote and displays it
