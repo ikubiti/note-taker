@@ -40,7 +40,6 @@ notes.post('/', (req, res) => {
   }
 });
 
-
 // DELETE Route for a specific note
 notes.delete('/:note_id', (req, res) => {
   const noteId = req.params.note_id;
