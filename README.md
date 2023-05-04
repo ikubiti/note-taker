@@ -57,13 +57,13 @@ Then I am presented with empty fields to enter a new note title and the note's t
 
 To run this application as an end-user, please visit;
 
-https://sleepy-crag-23591.herokuapp.com/
+https://note-taker-express101.herokuapp.com/
 
 ## Usage
 
 The Note Taker app is initiated by visiting the webpage below;
 
-https://sleepy-crag-23591.herokuapp.com/
+https://note-taker-express101.herokuapp.com/
 
 The image below shows the landing page of the Note Taker app.
 
